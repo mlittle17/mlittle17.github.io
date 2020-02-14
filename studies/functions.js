@@ -18,6 +18,13 @@
      * 
      */
      
+     function add(num1, num2) {
+         return num1 + num2
+     }
+     
+     // passing in the ARGUMENTS of 1 and 2 to the add function
+     add(1,2);
+     
 // 3. Syntax when naming a function
 
     /**
@@ -31,6 +38,12 @@
      * 
      * 
      */
+     
+     let myFunction = function(num1, num2) {
+         
+         return num1 - num2
+         
+     }
      
 // 5. Specifiying inputs and outputs
 

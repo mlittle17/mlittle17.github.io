@@ -1,7 +1,10 @@
 /**
  * VARIABLES
- * This is my explanation of variables have a great night!
+ * 0. Variables are the containers of all the data we use and manipulate within javascript. Typically our programs need to access the data multiple times, so variables
+ * are a great way to store data in a place where our programs can go back to acces it. Additionally, variables are great because, in most cases (more on that below), 
+ * that data or value of a variable can be changed or updated, meaning we don't have to go back and do it ourselves!
  * 
+ * If data and data types are the fuel of our programs, we could consider variables the engine that takes that fuel and turns it into power. So let's get started!
  * 
 */
 // 1. declaration and assignment //
