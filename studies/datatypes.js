@@ -1,12 +1,22 @@
 /**
  * DATATYPES
  * 
+ * 0. At a very basic level, we know that computer programs manipulate data.
+ * However, it's important to note that Javascript doesn't just take in
+ * whatever data we tell it to. For example, if I told a program to add the 
+ * word hello to the word world, I would just get what's called a reference
+ * error. */
+ 
+    console.log(Hello + World); // will return reference error
+ /**
+ * This is because Javascript (and most programming languages) don't understand
+ * words as just text. Rather, text like this would be best used as what we
+ * call a string, which is one of the few datatypes within javascript. 
  * 
- * 
- * 
- * 
- * 
- * 
+ * Datatypes are the building blocks of javascript and how computers understand
+ * and organzie the data we are trying to do something with. Using the right
+ * datatype in our problems or programs are critical to smooth communication 
+ * with our code. So let's learn about all the different data types below.
  */
  
 // 1. Number //

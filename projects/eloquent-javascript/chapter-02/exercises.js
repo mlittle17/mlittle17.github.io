@@ -36,7 +36,22 @@ function fizzBuzz(start, end) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard(number) {
+let size = number;
 
+let cb = "";
+
+for (let i = 0; i < size; i++) {
+  for (let ii = 0;ii < size; ii++) {
+    if ((i + ii) % 2 == 0) {
+      cb += " ";
+    } else {
+      cb += "#";
+    }
+  }
+  cb += "\n";
+}
+
+console.log(cb);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
