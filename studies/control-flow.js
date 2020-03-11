@@ -23,7 +23,12 @@
     /**
      * As we mentioned above, if statements are the very first step in establishing
      * our control flow. Essentially, it's the very beginning of a decision tree.
-     * For our example, let's just build a simple funciton that compares two
+     * Another important port about if statements is that we can only use one if
+     * statement in our control flow. Meaning, that when we set up our conditional
+     * statements, it's important to consider what outcome or thing we really
+     * want to check for first, because our code will run downhill from there.
+     * 
+     * But for now, let's just build a simple funciton that compares two
      * input numbers.
      */
      
@@ -46,9 +51,14 @@
     /**
      * Else-if statments allow us to account for other possibilites with our
      * input data, so if the first if statement is false, we can tell our 
-     * program to do something else. Since our compare function is already 
-     * defined, let's just create a new function called compare2 that accounts
-     * for the possibility of num2 being greater than num1
+     * program to do something else. Althogh we're limited in how many if
+     * statements we can use in our control flow, we actually can use as many
+     * else if statements as we need to ensure that we're accounting for all
+     * possibilites.
+     * 
+     * Since our compare function is already defined, let's just create a new
+     * function called compare2 that accounts for the possibility of num2 
+     * being greater than num1
      */
      
      /** You'll notice that compare 2 is almost identical to compare for the first
@@ -80,9 +90,17 @@
     /**
      * Else statements are what we use in control flow when we've exhausted all
      * other potential outcomes (meaning all conditional statments have resloved to false)
-     * within our program and we just want our program to do something. As we
-     * mentioned in our example above neither compare nor compare2 account for 
-     * the possibility of our two parameters being the same number. And while
+     * within our program and we just want our program to do something. 
+     * 
+     * Just like we're limited to one if statement (which start our control flow)
+     * within our code, we're also limited to one else statement. However, what's
+     * kind of cool about control flow is that else statements aren't really even
+     * required. Our code will run just fine as long as our if and else if's are
+     * formatted correctly. But, it's good practice to use else so we can have
+     * some kind of result or outcome in place.
+     * 
+     * As we mentioned in our example above neither compare nor compare2 account
+     * for the possibility of our two parameters being the same number. And while
      * it's a little annoying to have to account for this possibility, the good
      * news is that we don't even have to use a conditional statement! Again,
      * this is because else is our final option command. So let's build a 
@@ -121,6 +139,24 @@
      * we don't account for all potential inputs, so we can use default at the
      * end of our switch statement (just like else) to ensure that something 
      * happens.
+     * 
+     * We build switch statments by typing switch and then open parentheses.
+     * Inside the parentheses, we add the expression we are trying to test.
+     * After that, we build our code block with a pair of curly braces.
+     * 
+     * Inside the code blcok we build our series of things we are trying to test. 
+     * We do this by typing the word case then the value we are checking for, 
+     * followed by a colon. After the colon, we insert the code we want to 
+     * execute if that case resolves to true when we use our input value.
+     * 
+     * If we want to add other cases to test for, we add the word break and a
+     * semi-colon. Then we follow the same case <value> : <code block> syntax
+     * for each case we want to test for.
+     * 
+     * Once we exhaust all potential outcomes, it is good practice to add a default
+     * statement that will execute if all other cases are false. You do this by 
+     * typing default and then a colon. After the colon, enter the code you
+     * want to execute if all other cases are false.
      */
      
      /**

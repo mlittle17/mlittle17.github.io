@@ -1,7 +1,13 @@
 /**
 * FUNCTIONS:
-* 0. dfsdsddfdsfdsfdsfsd
-*    fdlfkdlfkdl;fkdsl
+* 0. Functions are a lot of things in Javascript, but the easiest way to think
+* about them is as sub-programs, no matter how big or small. We use Javascript
+* to build programs, and functions are the sub-programs that power the programs
+* we build.
+* 
+* If data are the building blocks of our programs, a function is the action of
+* putting those building blocks to work, whether it's building the foundation,
+* installing a door, or fixing the roof. Functions act on our data.
 * 
 */
 

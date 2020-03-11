@@ -101,6 +101,28 @@
          * in the 1 position, so on.
          */
          
+    /** 
+     * Arrays are useful because they can be containers for a multitude 
+     * of different values and data-types. However, it's important to remember
+     * that we want to DO things with our data, not just put it into a container
+     * and leave it there.
+     * 
+     * We can act on data within an array by doing what we call "accessing"
+     * the data. To access data in an array we simply type in the name of the
+     * array we're trying to access and then a pair of square brackets ([ ]).
+     * Inside the square brackets we need to either put in a whole number
+     * or an expression that evaluates to a whole number. This is called
+     * bracket notation.
+     * 
+     * Using our dunce array that we built above, let's see what values are 
+     * printed to the console when we use bracket notation.
+     * 
+     */
+     
+     console.log(dunce[0]); // will print "Ignatius" to the console
+     console.log(dunce[1 + 1]) // will print "New Orleans" to the console
+     console.log(dunce[dunce.length - 1]) // will print false to the console
+         
 // 5. Object //
 
     /**
@@ -128,6 +150,35 @@
           age: 42,
           realPerson: false
       }
+      
+      /**
+       * Just like arrays, objects are great containers for our data. But, again,
+       * just like arrays, objects only do so much for us if they're only containers.
+       * Thus, we have to use access methods to get that data. 
+       * 
+       * Similarly to arrays, we can use bracket notation to access data. The
+       * only difference is that when we use bracket notation with objects,
+       * we have to use a string inside the brackets since keys are stored as
+       * strings.
+       */
+       
+       console.log(dunce["age"]); // will print the number 42 to the console
+       
+       /**
+        * Another way we can access data in objects is using dot notation.
+        * Instead of brackets, we simply use a dot "." after the name of the
+        * object. Following the dot, we type in the name of the key we're trying
+        * to access, but it doesn't have to be a string.
+        * 
+        * Thus, it's really important that we know the exact name of our
+        * key so we can return the correct value. Otherwise, we'll just create
+        * a new key in our object.
+        */ 
+        
+        console.log(dunce.name); // will print Ignatous to the console
+        console.log(dunce.realPerson); // will print false to the console 
+       
+       
 
 // 6. Function //
 
@@ -244,11 +295,44 @@
 // 12. By Copy vs. By Reference
 
     /**
+     * As we've discussed, primitive data types are things like numbers, strings,
+     * and booleans. Arrays and Objects are complex data types. Another key 
+     * differentiation between primitive and complex data types is how they're 
+     * copied. 
      * 
+     * Primitive data types are copied by value. Complex data types are copied by
+     * reference. In simple terms, this means that simple data types are not
+     * married to whatever the value of the original data they're referring to.
      * 
      */
-
-
+     
+     let a = 1; 
+     let b = a; // here the value of a is copied into b
+     
+     /** But then we can turnaround and re-assign b to a new value and it doesn't
+      * change a at all
+      */
+      
+      b = 2;
+      console.log(a); // prints 1 to the console
+      console.log(b); // prints 2 to the console
+      
+      /**
+       * In the below example, our variable object is created and then we create
+       * a variable named objectCopy that is referencing the object inside of the
+       * object variable. Basically, this means that there is only one object that
+       * both object and objectCopy are pointing to.
+       */
+       
+       let object = {
+           a: 1,
+           b: 2
+       };
+       
+       let objectCopy = object;
+       
+       console.log(objectCopy.a); // will print 1 to the console
+       
 
 
 

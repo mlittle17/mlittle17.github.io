@@ -3,29 +3,31 @@
 // /////////////////////////////////////////////////////////////////////////////
 
 function flatten(arrays) {
-  // let arr = [];
-  // let retArr = [];
-  // for(let i = 0; i < arrays.length; i++) {
-  //   arr.push(arrays[i]);
-  // }
-  
-  // return retArr.concat(arr);
-  
-  var flat = 
-    arrays.reduce(function(a, b) { 
-      return a.concat(b);
+  /** creating variable named flattened that is equal to the expression of
+   * the result of using the reduce method with an anonymous function
+   * that returns the concatened result of the first element and then
+   * the second element
+   */
+  var flattened = arrays.reduce(function(e, ee) { 
+      return e.concat(ee);
     });
-
-console.log(flat);
+// returning the final result of flattened
+return flattened;
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop(start, func, update, body) {
-  for(let value = start; func(value); value = update(value)) {
-    body(value);
+function loop(start, test, iterator, body) {
+  /** building for loop that assigns i to start, and then uses test as
+   * the condition. So loop will run as long as test(i) resolves to true.
+   * Each time i is true, i will be reassigned to the result of the iterator
+   * function called with i
+   */
+  for(let i = start; test(i); i = iterator(i)) {
+    // calling body function with i each time
+    body(i);
   }
 }
 
@@ -33,11 +35,15 @@ function loop(start, func, update, body) {
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every(array, func) {
+function every(array, test) {
+  // using conventional for loop
   for(let i = 0; i < array.length; i++) {
-    if(!func(array[i]))
+    // if any function call on the index of i within input array is false..
+    if(!test(array[i]))
+      // returning false
       return false;
   }
+  // otherwise will return true
     return true;
   }
 

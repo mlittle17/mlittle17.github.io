@@ -29,34 +29,173 @@ var maleCount = function(array) {
     
     
     // get access to each customer object and filter out the males
-    let arrOfMaleObj = _.filter(array, function(customerObj){
-        // checking to see if customer object is a male using the gender key
-        return customerObj.gender === "male";
-    })
-    let number = arrOfMaleObj.length // chain on .length to get number of male customers
-    console.log(number);
-    return number;
+//     let arrOfMaleObj = _.filter(array, function(customerObj){
+//         // checking to see if customer object is a male using the gender key
+//         return customerObj.gender === "male";
+//     })
+//     let number = arrOfMaleObj.length // chain on .length to get number of male customers
+//     console.log(number);
+//     return number;
+// };
+
+return _.filter(array, function(customerObj, index, array) {
+    return customerObj.gender === "male";
+    
+}).length
 };
 
 
+var femaleCount = function(array) {
+    let arrOfFmaleObj = _.filter(array, function(customerObj){
+        return customerObj.gender === "female";
+    }
+    )
+    let number = arrOfFmaleObj.length
+    return number;
+    
+    
+};
 
-var femaleCount;
+var oldestCustomer = function(array) {
+    let name
+    let age = 0;
 
-var oldestCustomer;
+    _.each(array,function(value,index, array) {
+        
+        if(value.age > age) {
+            age = value.age
+            name = value.name
+        }
+    })
+    return name
+}
 
-var youngestCustomer;
+    
+    
+    
+    
 
-var averageBalance;
+var youngestCustomer = function(array) {
+    let name
+    let age = 100;
+    
+    _.each(array, function(value, index, array) {
+        
+        if(value.age < age) {
+            age = value.age
+            name = value.name
+        }
+        
+    })
+    return name;
+    
+    
+    
+    
+};
 
-var firstLetterCount;
+var averageBalance = function(array) {
 
-var friendFirstLetterCount;
+// Find the average balance of all customers
 
-var friendsCount;
+let balances = _.pluck(array, "balance");
+// console.log(balances);
+let numBalances = [];
 
-var topThreeTags;
+for (let i = 0; i < balances.length; i++) {
+  let balString = balances[i].replace("$", "")
+    balString = balString.replace(",", "")
+    numBalances.push(Number(balString));
+}
 
-var genderCount;
+let total = 0; 
+
+for(let i = 0; i < numBalances.length; i++) {
+    total += numBalances[i];
+}
+
+return total/numBalances.length;
+
+}
+
+var firstLetterCount = function(array,letter) {
+    var lowLetter = letter.toLowerCase();
+    return _.filter(array, function(customerObj, index, array) {
+    return customerObj.name[0].toLowerCase() === lowLetter;
+    
+}).length
+};
+
+ 
+/**
+ * ### 7: `friendFirstLetterCount`
+ - **Objective**: Find how many friends of a given customer have names that start with a given letter
+ - **Input**: `Array`, `Customer`, `Letter`
+ - **Output**: `Number`
+ - **Constraints**:
+ */
+ 
+
+ var friendFirstLetterCount = function(customers, customerName, letter) {
+    // console.log(customerName);
+    // using reduce to return the customerObj that matches the input string
+    let customer = _.reduce(customers, function(customerMatch, customerObj) {
+        if(customerName === customerObj.name) {
+            return customerObj
+        } return customerMatch;
+        
+        
+    }) 
+    // using firstLetterCount function to check the array of customer
+        // returning a number of friends that match that letter
+    return firstLetterCount(customer.friends, letter);
+ }
+
+var friendsCount = function(customers, customerName) {
+   
+    return _.reduce(customers, function(friendsList, customerObj) {
+         if(_.pluck(customerObj.friends, "name").includes(customerName)) {
+             friendsList.push(customerObj.name);
+         };
+            return friendsList;
+    }, [])
+    
+    
+}
+    
+    
+
+var topThreeTags = function(customers) {
+    // console.log(customers, "in");
+    // returning the top three tags amongst all customers
+    let tagsArr = customers.reduce(function(allTags, customerObj) {
+            var flat = allTags.concat(customerObj["tags"]);
+            // console.log(flat);
+            return flat;
+            //console.log(allTags);
+        }, []
+    )
+  
+    console.log(tagsArr);
+    
+}
+
+var genderCount = function(customers) {
+    
+    
+    return customers.reduce(function(genderCountObj, customerObj) {
+        if(genderCountObj[customerObj.gender]) {
+            genderCountObj[customerObj.gender] += 1;
+        } else {
+            genderCountObj[customerObj.gender] = 1;
+        }
+            return genderCountObj;
+            console.log(genderCountObj);
+    }, {})
+    
+    
+    
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
