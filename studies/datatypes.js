@@ -331,7 +331,24 @@
        
        let objectCopy = object;
        
-       console.log(objectCopy.a); // will print 1 to the console
+       /**
+        * So even though we have a variable named objectCopy, any changes
+        * we make to objectCopy will ALSO happen in the object variable since
+        * both objectCopy and object are referencing the same variable.
+        */
+        
+        // re-assigning the value located at the key of "a" to the number 3
+        objectCopy.a = 3;
+        
+        /** However, if we conosle log the key of a within the variable 
+         * object, we'll see that it to has also been updated with the value
+         * of 3 at the key of a since objectCopy is a reference to the object
+         * within object.
+         */
+       
+         console.log(object.a); // will print 3 to the console
+       
+       
        
 
 

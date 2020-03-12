@@ -217,26 +217,43 @@
     /**
      * As we mentioned in the Functions and Scopes section, functions are also
      * restrained to the scope their created in, but they can access variables
-     * or data that are created in their parent scope. Functions that access 
-     * variables from the parent scope are called closures. 
+     * or data that are created in their parent scope. Functions that retain
+     * access to an outer function's variables even after the outer function
+     * has returned are called closures.
      * 
      */
      
-     // defining variable named parentVar that is part of this pages Global Scope
-     let parentVar = 2;
-     
-     /**
-      * In the below function, multiply is a closure because the variable 
-      * multiply inside the multiply function is accessing our parentVar outside
-      * the function.
+     /** Here we've created a function named createFunction that takes in no
+      * parameters. Inside the code block, we create the variable
+      * bestWife and assign it to the string of Shelby.
+      * 
+      * We then return an anonymous function that just console logs
+      * the variable of bestWife.
       */
-      
-     function multiply(number) {
-         var multiply = number * parentVar;
-         return multiply
-     }
+    function createFunction() {
+        var bestWife = "Shelby";
+        return () => {
+            console.log(bestWife);
+        }
+    }
+    
+    /** Since bestWife is enclosed in the function block, we can't
+     * access the value of that variable. It will log a Reference
+     * Error becuase bestWife is not defined. Also, calling createFunction
+     * will just tell us that it's a function, nothing else. */
      
-     multiply(2); // will return the number 4
+     createFunction(); // will print [Function] to the console
+     
+     console.log(bestWife); // will produce a Reference Error
+    
+    /** However, we can then assign our createFunction to another variable
+     * named bestWifeName, still closing in our variable, but making that value
+     * available. This is a closure. */
+    
+    var bestWifeName = createFunction();
+    
+    bestWifeName(); // will print Shelby to the console
+
      
      
      
