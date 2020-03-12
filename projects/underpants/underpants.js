@@ -22,6 +22,7 @@ var _ = {};
 */
 
 _.identity = function(value) {
+    // returns input value, unchanged
     return value
 }
 /** _.typeOf
@@ -45,10 +46,15 @@ _.identity = function(value) {
 */
 
 _.typeOf = function(value) {
+    // conditional that checks if value is an array
     if(Array.isArray(value) === true) {
+        // returns string of "array" if true
         return "array"
+    // else if that checks if value is null    
     } else if(value === null) {
+        // returns string of "null" if true
         return "null";
+    // returns typeof value (in a string) if above conditions are false
     } return typeof value;
 }
 
@@ -72,17 +78,28 @@ _.typeOf = function(value) {
 */
 
 _.first = function(array, number) {
+    // creating empty array
     let arr = [];
+    // conditional that checks if array is array AND number is number
     if(_.typeOf(array) === "array" && _.typeOf(number) === "number") {
+        // if true, checks to see if number is negative
         if(number < 0) {
+            // returns empty array if true
             return arr;
+        // else if that checks if number is greater than the array length
         } else if(number > array.length) {
+            // returns entire array if true
             return array
+        // otherwise, loops over array and pushes the first number of elements to arr    
         } else {for(let i = 0; i < number; i++) {
             arr.push(array[i]);
+        // returns arr    
         } return arr;}
+    
+    // if not an array, just return the empty array    
     } else if (_.typeOf(array) !== "array") {
         return arr
+    // if number is not a number, return the first element of the input array
     } else return array[0]
 }
 /** _.last
@@ -104,17 +121,27 @@ _.first = function(array, number) {
 */
 
 _.last = function(array,number) {
+    // creating an empty arrau
     let arr = [];
+    // conditional that checks if array is an array && number is a number
     if(_.typeOf(array) === "array" && _.typeOf(number) === "number") {
+        // if true, check to see if number is negative
         if(number < 0) {
+            // returns empty array if true
             return arr;
+        // if not negative, second conditional that checks if number is greater than the length of array    
         } else if(number > array.length) {
+            // returns entire array if true
             return array
+        // else, will loop over array and return an array of the last number of elements inside that array
         } else {for(let i = array.length - 1; i >= number - 1; i--) {
             arr.unshift(array[i]);
+        // returning final array
         } return arr;}
+    // if array is not an array, return empty array
     } else if (_.typeOf(array) !== "array") {
         return arr
+    // if number is not number, return the last element of the array
     } else return array[array.length - 1]; 
     
     
@@ -139,11 +166,14 @@ _.last = function(array,number) {
 */
 
 _.indexOf = function(array, value) {
+    // for loop that loops over entire array
     for(let i = 0; i < array.length; i++) {
+        // if an element within the array is equal to the input value, return that index
         if(array[i] === value) {
             return i
         }
     }
+    // returns -1 otherwise
     return -1
 }
 
@@ -163,7 +193,7 @@ _.indexOf = function(array, value) {
 */
 
 _.contains = function(array,value) {
-    
+    // returns true if indexOf() resolves to a number greater than -1, false otherwise
     return (_.indexOf(array, value) !== -1 ? true : false)
 }
 
@@ -184,11 +214,16 @@ _.contains = function(array,value) {
 */
 
 _.each = function(collection, test) {
+    // conditional that checks if collection is an array
     if(_.typeOf(collection) === "array") {
+        // loops over array if true
         for(let i = 0; i < collection.length; i++) {
+            // calls test function over each element, index, and the collection
             test(collection[i], i, collection);
         }
+    // else, loops over object    
     } else for(var key in collection) {
+        // calls test function for each value, key, and collection
         test(collection[key], key, collection);
     }
 }
@@ -205,11 +240,16 @@ _.each = function(collection, test) {
 */
 
 _.unique = function(array) {
+    // creating empty array
     let newArr = [];
+    // looping over array
     for(let i = 0; i < array.length; i++) {
+    // conditional that checks if indexOf() resolves to -1, meaning that the element is not inside newArr
     if(_.indexOf(newArr, array[i]) === -1) {
+        // pushing that element into the array if true
         newArr.push(array[i]);
     }
+    // returning newArr once complete
     } return newArr;
 }
 
@@ -231,17 +271,19 @@ _.unique = function(array) {
 */
 
 _.filter = function(array, test) {
-
+// creating empty array
 let newArr = [];
-
+// creating function expression that takes in the element, index, and array
 let myFunction = function(element, index, array) {
+    // if the test function resolves to true for an element, it's index, and the array, push that element into newArr
     if(test(element, index, array)) {
         newArr.push(element);
     }
 }    
-    
+// calling each with the input array and myFunction as function parameter
 _.each(array, myFunction);
      
+     // returning newArr
      return newArr;
 }
 
@@ -260,16 +302,19 @@ _.each(array, myFunction);
 */
 
 _.reject = function(array, test) {
+    // creating empoty array
     let newArr = [];
-    
+    // creating function expression that takes in the element, index, and array
     let myFunction = function(element, index, array) {
+        // if the test function resolves to false for an element, it's index, and the array, push that element into newArr
         if(!test(element, index, array)) {
             newArr.push(element);
         }
    
     }
+    // calling filter with the input array and myFunction as function parameter
     _.filter(array, myFunction);
-    
+    // returning newArr
     return newArr;
 }
 
@@ -293,15 +338,17 @@ _.reject = function(array, test) {
 */
 
 _.partition = function(array, test) {
-    
+    // creating an empty array named result
     let result = [];
-    
+    // truthy is the result of running the input array through filter, returning an array
     let truthy = _.filter(array, test);
+    // falsy is the result of running the input array through reject, returning an array
     let falsy = _.reject(array, test);
     
+    // pushing both truthy and falsy to the result array
     result.push(truthy);
     result.push(falsy);
-    
+    // returning the result array
     return result;
 }
 
@@ -322,10 +369,14 @@ _.partition = function(array, test) {
 */
 
 _.map = function(collection, test) {
+ // creating an empty array
  let resultArr = [];
+    // running each of the collection with a function that takes in the element, it's index, and a collection
     _.each(collection, function(element, index, collection) {
+        // pushing the result of running test over each element, index, and collection to the resultArr array
         resultArr.push(test(element, index, collection));
     })
+    // returning the resultArr
     return resultArr;
 }
 
@@ -341,9 +392,9 @@ _.map = function(collection, test) {
 */
 
 _.pluck = function(collection, property) {
-    
+    // returning the results of running map over the collection, will be an array
     return _.map(collection, function (collection, index) {
-        
+        // returning the value at the given property
         return collection[property];
     })
     
@@ -535,12 +586,17 @@ _.reduce = function(collection, test, seed) {
 */
 
 _.extend = function(object1, ...objects) {
+    // looping over the collection of objects
     for(let i = 0; i < objects.length; i++) {
+        // for in loop that's run over each object
         for(var key in objects[i]) {
+            // updates the key within object1 with a new value
+                // also creates this key/value pair if it doesn't exist in object 1
             object1[key] = objects[i][key];
         }
         
     }
+    // returning the final, updated object1
     return object1;
 }
 
